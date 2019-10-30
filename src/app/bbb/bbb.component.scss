@@ -1,0 +1,181 @@
+// //colors
+// $grey-1: #555;
+// $grey-2: #888;
+// $grey-3: #aaa;
+// $grey-4: #eee;
+
+// $red: #f55;
+// $green: rgb(39, 151, 39);
+// $blue: rgb(40, 192, 230);
+
+// // variables
+// $radius: 5px;
+// $small: 1rem;
+// $large: 2rem;
+// $border: 2px solid $grey-3;
+
+// //mixins
+// @mixin rounded {
+//     border-radius: $radius;
+// }
+
+// @mixin content-centered {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// @mixin bold {
+//     font-weight: bold;
+// }
+
+@import 'main';
+
+.test-sass {
+    width: 30rem;
+    margin: auto;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 1.5rem;
+
+    display: grid;
+    grid-template-rows: 6rem 5fr 5rem;
+    grid-template-columns: 1fr;
+
+    .tooltip {
+        grid-row: 1;
+        background-color: $grey-1;
+        color: $grey-4;
+        @include rounded;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: $small;
+        position: relative;
+
+        .tooltip-amount {
+            @include bold;
+        }
+
+        .tooltip-text::after{
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 85%;
+            border-width: $small / 2;
+            border-top-width: .7rem;
+            border-style: solid;
+            border-color: $grey-1 transparent transparent transparent;
+        }
+
+        
+    }
+
+    .donation {
+        grid-row: 2;
+        border: $border;
+        color: $grey-1;
+
+        .progress-bar {
+            height: 1.2rem;
+            border-bottom: $border;
+            display: grid;
+            grid-template-columns: 75% 25%;
+
+            .progress-bar-done {
+                grid-column: 1;
+                background-color: $red;
+            }
+
+            .progress-bar-todo {
+                grid-column: 2;
+            }
+        }
+
+        .donation-main {
+            padding: $large;
+        }
+
+        .expiration {
+            .expiration-highlighted {
+                color: $red;
+                @include bold;
+            }
+        }
+
+        .description {
+            padding: $large 0;
+            .description-highlighted {
+                @include bold;
+            }
+        }
+
+        .donation-row {
+            display: grid;
+            grid-template-rows: 5rem;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 2rem;
+
+            .donation-amount {
+                grid-column: 1;
+
+                @include rounded;
+                @include content-centered;
+                justify-content: start;
+                border: $border;
+                padding: $small;
+                font-size: $large;
+
+                .currency {
+                    padding-right: $small / 2;
+                    color:$grey-3;
+                }
+
+                .amount {
+                    color: $grey-1;
+                }
+
+            }
+
+            .actions-give {
+                grid-column: 2;
+                background-color: $green;
+                color: $grey-4;
+                @include rounded;
+                @include content-centered;
+            }
+        }
+
+        .question-link {
+            padding-top: $small;
+            font-style: italic;
+            color: $blue;
+        }
+    }
+
+    .actions {
+        grid-row: 3;
+        padding-top: $small;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: $large;
+        
+        .actions-button {
+            @include rounded;
+            @include content-centered;
+            border: $border;
+            background-color: $grey-4;
+            color: $grey-1;
+        }
+
+        .actions-save {
+            grid-column: 1;
+        }
+
+        .actions-tell {
+            grid-column: 2;
+        }
+    }
+}

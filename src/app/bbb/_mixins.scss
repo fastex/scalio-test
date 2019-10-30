@@ -1,0 +1,16 @@
+@import 'variables';
+
+@mixin rounded {
+    border-radius: $radius;
+}
+
+@mixin content-centered {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin bold {
+    font-weight: bold;
+}
